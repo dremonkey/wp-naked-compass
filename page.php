@@ -3,13 +3,9 @@
  * The template for displaying all pages.
  *
  * This is the template that displays all pages by default.
- * Please note that this is the wordpress construct of pages
- * and that other 'pages' on your wordpress site will use a
- * different template.
  *
  * @package WordPress
- * @subpackage StarkHTML5
- * @since StarkHTML5 1.0
+ * @subpackage NakedCompass
  */
 
 get_header(); ?>

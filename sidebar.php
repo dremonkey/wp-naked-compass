@@ -3,12 +3,11 @@
  * The Sidebar containing the primary and secondary widget areas.
  *
  * @package WordPress
- * @subpackage StarkHTML5
- * @since StarkHTML5 1.0
+ * @subpackage NakedCompass
  */
 ?>
 
-<ul class="xoxo">
+<ul>
 
 <?php
 /* When we call the dynamic_sidebar() function, it'll spit out

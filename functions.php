@@ -2,8 +2,8 @@
 
 /**
  * @package WordPress
- * @subpackage StarkHTML5
- * @since StarkHTML5 1.0
+ * @subpackage NakedCompass
+ * @since NakedCompass 1.0
  */
 
 /** =========================================================================== **/
@@ -14,7 +14,7 @@
 	 * THEME_NAME is used throughout the site for things like translations and
 	 * concatenated to the front of filter, action, and function names.
 	 */
-	define( 'THEME_NAME', 's3k');
+	define( 'THEME_NAME', 'NakedCompass');
 	define( 'POST_EXCERPT_LENGTH', 60);
 	define( 'THUMB_IMAGE_WIDTH', apply_filters( THEME_NAME.'_thumb_image_width', 300 ) );
 	define( 'THUMB_IMAGE_HEIGHT', apply_filters( THEME_NAME.'_thumb_image_width', 300 ) );

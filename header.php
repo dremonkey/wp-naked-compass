@@ -5,8 +5,8 @@
  * Displays all of the <head> section and everything up till <div id="main">
  *
  * @package WordPress
- * @subpackage StarkHTML5
- * @since StarkHTML5 1.0
+ * @subpackage NakedCompass
+ * @since NakedCompass 1.0
  */
 ?>
 <!DOCTYPE html>

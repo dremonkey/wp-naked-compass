@@ -8,8 +8,8 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage StarkHTML5
- * @since StarkHTML5 1.0
+ * @subpackage NakedCompass
+ * @since NakedCompass 1.0
  */
 
 get_header(); ?>

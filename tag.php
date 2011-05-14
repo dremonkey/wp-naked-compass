@@ -3,8 +3,7 @@
  * The template for displaying Tag Archive pages.
  *
  * @package WordPress
- * @subpackage StarkHTML5
- * @since StarkHTML5 1.0
+ * @subpackage NakedCompass
  */
 
 get_header(); ?>

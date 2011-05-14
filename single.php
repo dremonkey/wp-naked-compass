@@ -3,8 +3,7 @@
  * The Template for displaying all single posts.
  *
  * @package WordPress
- * @subpackage StarkHTML5
- * @since StarkHTML5 1.0
+ * @subpackage NakedCompass
  */
 
 get_header(); ?>
