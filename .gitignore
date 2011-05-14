@@ -1,0 +1,7 @@
+# The dir for the files built by HTML5 Boilerplate #
+####################################################
+publish
+
+# Editor Project File #
+#######################
+*.sublime-project
