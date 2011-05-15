@@ -613,6 +613,7 @@
             <arg value="-jar"/>
             <arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
             <arg line="--preserve-multi-spaces"/>
+            <arg line="--remove-quotes"/>
             <arg line="--compress-js"/>
             <arg line="--compress-css"/>
             <arg line="--preserve-php"/>
@@ -658,6 +659,7 @@
             <arg value="-jar"/>
             <arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
             <arg line="--compress-js"/>
+            <arg line="--remove-quotes"/>
             <arg line="--compress-css"/>
             <arg line="--preserve-php"/>
             <arg line="-p 'build/patterns.txt'"/>

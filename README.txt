@@ -148,7 +148,7 @@
 
     ++ NEW ++
 
-      <target name="-htmlclean">
+       <target name="-htmlclean">
         <echo message="Run htmlcompressor on the HTML"/>
         <echo message=" - maintaining whitespace"/>
         <echo message=" - removing html comments"/>
@@ -158,9 +158,11 @@
             <arg value="-jar"/>
             <arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
             <arg line="--preserve-multi-spaces"/>
+            <arg line="--remove-quotes"/>
             <arg line="--compress-js"/>
             <arg line="--compress-css"/>
             <arg line="--preserve-php"/>
+            <arg line="-p 'build/patterns.txt'"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="../${dir.publish}/*"/>
@@ -182,7 +184,8 @@
             <arg line="--preserve-multi-spaces"/>
             <arg line="--compress-js"/>
             <arg line="--compress-css"/>
-             <arg line="--preserve-php"/>
+            <arg line="--preserve-php"/>
+            <arg line="-p 'build/patterns.txt'"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="../${dir.publish}/*"/>
@@ -201,8 +204,10 @@
             <arg value="-jar"/>
             <arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
             <arg line="--compress-js"/>
+            <arg line="--remove-quotes"/>
             <arg line="--compress-css"/>
             <arg line="--preserve-php"/>
+            <arg line="-p 'build/patterns.txt'"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="../${dir.publish}/*"/>
