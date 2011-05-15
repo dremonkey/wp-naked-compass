@@ -39,7 +39,17 @@
 	to work correctly with this wordpress theme.
 
 	If you update HTML5 Boilerplate, you will need to
-	make the following changes to the build.xml file:
+	make the following changes to the build.xml file, as 
+    well as add the patterns.txt file:
+
+    ----------------------------------------------------
+    patterns.txt 
+    ----------------------------------------------------
+    Used by the build file so that it does not strip out
+    <!--[ ]--> comments. For some reason if you change the 
+    build file so that you no longer tell it is compressing
+    html files, it will strip out these comments, so we have
+    to explicitly tell it to leave these comments.
 
 	----------------------------------------------------
 	build.xml line 599 
