@@ -3,20 +3,18 @@
 
 ====================================================================
 
-NakedCompass is a bare-bones WordPress theme created 
-to act as a starting point for the theme designer.
+NakedCompass is a bare-bones WordPress theme created to act as a 
+starting point for the theme designer.
 
 NakedCompass is free of all presentational elements and non-semantic 
 markup.
 
-NakedCompass is a modification of the Starkers Theme.
-The main difference is that it is built to be
-compatible with the HTML5 Boilerplate build script.
-Also I have stripped out all references to the
-twentyten theme, as well as functions that I 
-felt were unnecessary.
+NakedCompass is a modification of the Starkers Theme. The main difference 
+is that it is built to be compatible with the HTML5 Boilerplate build script 
+and the Compass CSS Framework. 
 
-My next step is to integrate the Compass Framework.
+I have stripped out all references to the twentyten theme, 
+as well as functions that I felt were unnecessary.
 
 NakedCompass is free and fully GPL-licensed, 
 so you can use it for whatever you like — even 
@@ -42,7 +40,7 @@ If you update HTML5 Boilerplate, you will need to make the following changes to 
 as well as add the patterns.txt file:
 
 ----------------------------------------------------
-patterns.txt 
+#### patterns.txt 
 ----------------------------------------------------
 Used by the build file so that it does not strip out
 <!--[ ]--> comments. For some reason if you change the 
@@ -51,9 +49,8 @@ html files, it will strip out these comments, so we have
 to explicitly tell it to leave these comments.
 
 ----------------------------------------------------
-build.xml line 599 
-
-Changed to make sure that we can use wp_enqueue_script 
+#### build.xml line 599 
+##### Changed to make sure that we can use wp_enqueue_script 
 ----------------------------------------------------
 
 #### OLD
