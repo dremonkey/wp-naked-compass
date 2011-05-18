@@ -172,34 +172,6 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 ::selection { background:#FF5E99; color:#fff; text-shadow: none; }
 
 
-
-
-/** ========================================================================================== **/
-/* > Primary Theme Styles in this section 
-/** ========================================================================================== **/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/** ========================================================================================== **/
-/* > Non-semantic helper classes: please define your styles before this section.
-/** ========================================================================================== **/
-
-
-
-
 /* For image replacement */
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 
