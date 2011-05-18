@@ -16,8 +16,6 @@
 	 */
 	define( 'THEME_NAME', 'NakedCompass');
 	define( 'POST_EXCERPT_LENGTH', 60);
-	define( 'THUMB_IMAGE_WIDTH', apply_filters( THEME_NAME.'_thumb_image_width', 300 ) );
-	define( 'THUMB_IMAGE_HEIGHT', apply_filters( THEME_NAME.'_thumb_image_width', 300 ) );
 	define( 'TEMPLATE_URL', get_bloginfo('template_url') );
 	define( 'STYLES_DIR', TEMPLATE_URL.'/css' );
 
@@ -51,9 +49,6 @@ Class Theme_Setup
 		// This theme styles the visual editor with editor-style.css to match the theme style.
 		add_editor_style();
 
-		// This theme uses post thumbnails
-		add_theme_support( 'post-thumbnails' );
-
 		// Add default posts and comments RSS feed links to head
 		add_theme_support( 'automatic-feed-links' );
 
@@ -74,8 +69,21 @@ Class Theme_Setup
 		// This theme allows users to set a custom background
 		add_custom_background();
 
-		// Larger images will be auto-cropped to fit.
-		set_post_thumbnail_size( THUMB_IMAGE_HEIGHT, THUMB_IMAGE_WIDTH, true );
+		// Enable thumbnails and set the sizes
+		Theme_Setup::set_thumbnails();
+	}
+
+	function set_thumbnails()
+	{
+		// This theme uses post thumbnails
+		add_theme_support( 'post-thumbnails' );
+
+		// Default Post Thumbnail dimensions
+		set_post_thumbnail_size( $width = 150, $height = 150, $crop = true ); 
+
+		/* Thumbnail for our featured content slider... 1.6 ratio (i.e. the golden ration) */
+    	add_image_size( $name = 'img_golden', $width = 480, $height = 300, $crop = true );
+
 	}
 
 	/**
@@ -141,12 +149,16 @@ Class Theme_Setup
 
 	function remove_wp_js(){
 		// Deregister the jquery that comes with wordpress
-		if (!is_admin()) wp_deregister_script('jquery');
+		if (!is_admin()) { 
+			wp_deregister_script('jquery');
+		}
 	}
 
-	function add_js(){
+	function add_js()
+	{
 
 		// Load the google api jquery
+		// http://encosia.com/2008/12/10/3-reasons-why-you-should-let-google-host-jquery-for-you/
 		wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js', '', NULL, true);
 		
 		// Do not load these scripts if on the admin page	
@@ -181,9 +193,11 @@ Class Utilities
 	 */
 	public function add_js($path, $req, $in_footer)
 	{
-		preg_match("/([\w.-]+)(?=\.min)|([\w.-]+)(?=\.js)/", $path, $matches);
-		$name = $matches[0];
-		$name = Utilities::clean_string($name);
+		$pos = strrpos($path, '/') + 1;
+		$name = Utilities::slice_string($path, $pos );
+		$name= preg_replace("/((-[0-9.]+)?(.min)?(.js)$)/", '', $name);
+		$name = Utilities::clean_string($name, 50, '');
+
 		$path = TEMPLATE_URL.$path;
 		wp_enqueue_script( $name, $path, $req, NULL, $in_footer );
 	}
@@ -214,8 +228,15 @@ Class Utilities
 
 	public function slice_string($input, $slice) {
 
-	    $arg = explode(':', $slice);
-	    $start = intval($arg[0]);
+
+
+		if (is_int($slice)) {
+			$start = $slice;
+		} else { 
+			$arg = explode(':', $slice);
+			$start = intval($arg[0]);
+		}
+
 	    if ($start < 0) {
 	        $start += strlen($input);
 	    }
