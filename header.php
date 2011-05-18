@@ -26,10 +26,10 @@
 	<!-- Title is filtered a bit in functions.php -->
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 
-	<meta name="description" content="">
+	<meta name="description" content="" />
 
 	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
- 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
@@ -37,14 +37,16 @@
 	<link rel="stylesheet" type="text/css" media="all" href="<?= STYLES_DIR ?>/style.css" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
+	<!-- Place scipts to load in the header below here -->
 	<!-- Modernizr enables HTML5 elements & feature detects --> 
 	<!-- Respond is a polyfill for min/max-width CSS3 Media Queries -->
-	<?php Utilities::add_js('/js/libs/modernizr-1.7.min.js', '', false) ?>
-	<?php Utilities::add_js('/js/libs/respond.min.js', '', false) ?>
+	<?php Utilities::add_js('/js/libs/modernizr-1.7.min.js', '', $in_footer=false) ?>
+	<?php Utilities::add_js('/js/libs/respond.min.js', '', $in_footer=false) ?>
 
+	<!-- Place scipts to load before </body> here -->
 	<!-- scripts concatenated and minified via ant build script-->
-	<!-- This will be stripped and replaced with the minified / concatenated js. -->
-	<?php Utilities::add_js('/js/script.js', 'jquery', true) ?>
+	<!-- This section will be stripped and replaced with the minified / concatenated js. -->
+	<?php Utilities::add_js('/js/script.js', 'jquery', $in_footer=true) ?>
 	<!-- end scripts-->
 
 <?php wp_head(); ?>
