@@ -5,3 +5,7 @@ publish
 # Editor Project File #
 #######################
 *.sublime-project
+
+# SASS Cache File     #
+#######################
+.sass-cache

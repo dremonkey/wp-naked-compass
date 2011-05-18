@@ -1,0 +1,18 @@
+/*
+===================================================================================================
+This should be included at the end of your stylesheet
+Placeholder media queries for responsive design. Modify as design requires.
+These follow after, and will override, the primary ('mobile first') styles
+The closing /mediaquery comment is required by respond.js min/max-width Media Query polyfill
+===================================================================================================
+*/
+
+@media only screen and (min-width: 480px) {
+  /* Style adjustments for viewports 480px and over go here */
+
+}/*/mediaquery*/
+
+@media only screen and (min-width: 768px) {
+  /* Style adjustments for viewports 768px and over go here */
+
+}/*/mediaquery*/
