@@ -1,0 +1,82 @@
+// SASS adaptation of 960 GS
+// IMPORTANT: This adaption does not use Global Variables and thus requires that in the file you are importing these mixins into, you must first declare a function called get_var in which you define all your parameters. This allows us pass different starting variables to the mixins here and generate different layouts for different device sizes.
+
+@import "clearfix"; // mixin name is 'cf'
+
+// The width of a column including the margin. By default this is 80px.
+$col_outer_width: get_var("col_width") + ( get_var("col_gutter") * 2 );
+
+// The width of a container including the margin. By default this is 960px.
+$container_width: $col_outer_width * get_var("col_count");
+
+@mixin container($clearfix: false, $padding: 0px) {
+	padding: $padding;
+ 	width: $container_width - $padding;
+  	margin: 0 auto;
+  	@if $clearfix {
+  		@include cf; 
+	}
+}
+
+@mixin alpha { margin-left: 0; }
+@mixin omega { margin-right: 0; }
+
+@mixin push { position: relative; }
+@mixin pull { position: relative; }
+
+// Computes the width
+@function grid_width($n, $first, $last) {
+	@if $n == get_var("col_count") {
+		@return $container_width; 
+	} @else if $n == 1 {
+		@return get_var("col_width");
+	} @else {
+		@return (get_var("col_width") * $n) + (2 * get_var("col_gutter") * ($n - 1) );
+	}
+}
+
+@mixin grid_margin( $n, $first, $last ) {	
+	margin: 0px get_var("col_gutter");
+	@if $n == get_var("col_count") {
+		margin: 0px; 
+	} @else if $first {
+		@include alpha 
+	} @else if $last {
+		@include omega
+	} 
+}
+
+// Use this to set the width of your content areas
+@mixin grid ( $n, $first: false, $last: false ) {
+	display: inline; 
+	float: left;
+	position: relative;
+	
+	@if $first or $last {
+		width: grid_width($n, $first, $last) + 10;
+	} @else {
+		width: grid_width($n, $first, $last);
+	}
+ 
+	@include grid_margin($n, $first, $last);
+}
+
+// Prefix: Extra Leadgin Space
+@mixin prefix($n){
+	padding-left: (get_var("col_width") + (2 * get_var("col_gutter"))) * $n;
+}
+
+// Suffix: Extra Trailing Space
+@mixin suffix($n){
+	padding-right: (get_var("col_width") + (2 * get_var("col_gutter"))) * $n;
+}
+
+// Push: moves a column 'n' columns to the left.
+@mixin push($n){
+	left: (get_var("col_width") + (2 * get_var("col_gutter"))) * $n;
+}
+
+// Pull: moves a column 'n' columns to the right.
+@mixin pull($n){
+	left: (get_var("col_width") + (2 * get_var("col_gutter"))) * -$n;  
+}

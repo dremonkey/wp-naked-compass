@@ -34,7 +34,7 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
-	<link rel="stylesheet" type="text/css" media="all" href="<?= STYLES_DIR ?>/style.css" />
+	<link id="main_stylesheet" rel="stylesheet" type="text/css" media="all" href="<?= STYLES_DIR ?>/style.css" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 	<!-- Place scipts to load in the header below here -->
@@ -46,6 +46,8 @@
 	<!-- Place scipts to load before </body> here -->
 	<!-- scripts concatenated and minified via ant build script-->
 	<!-- This section will be stripped and replaced with the minified / concatenated js. -->
+	<?php Utilities::add_js('/js/mylibs/jquery.cookie.js', 'jquery', $in_footer=true) ?>
+	<?php Utilities::add_js('/js/mylibs/jquery.layoutSwitcher.js', 'jquery', $in_footer=true) ?>
 	<?php Utilities::add_js('/js/script.js', 'jquery', $in_footer=true) ?>
 	<!-- end scripts-->
 
@@ -54,7 +56,7 @@
 
 <body <?php body_class(); ?>>
 	
-	<div id="container">
+	<div id="wrapper">
 		<header id="header">
 			<h1 class="logo">
 				<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
@@ -66,5 +68,12 @@
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
 				<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
 			</div><!-- #access -->
+
+			<ul id="layout">
+				<li><a href="<?= STYLES_DIR ?>/style.css">Variable</a></li>
+				<li><a href="<?= STYLES_DIR ?>/style_960.css">Standard</a></li>
+				<li><a href="<?= STYLES_DIR ?>/style_1280.css">Wide</a></li>
+			</ul>
+
 		</header>
-		<div id="main" role="main">
+		<div id="main" role="main content area">

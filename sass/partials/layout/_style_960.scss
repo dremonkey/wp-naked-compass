@@ -1,0 +1,30 @@
+// Define your 960gs variables
+// This function must be declared before importing partials/960
+// These are the values for the default 960px layout
+// ------------------------------------------------------------
+@function get_var($var) {
+	@if ($var == "col_count"){
+		@return 12;
+	} @else if ($var == "col_width") {
+		@return 60px;
+	} @else if ($var == "col_gutter") {
+		@return 10px;
+	}
+}
+
+// This gives access to the 960 grid mixin
+@import "partials/960";
+	
+#main {
+
+	@include container($clearfix: true, $padding: 0px);
+
+	.content {
+		@include grid( ceil(get_var("col_count") * 2 / 3) , true, false );
+	}// end .content
+
+	.sidebar {
+		@include grid( floor(get_var("col_count") * 1 / 3), false, true );
+	}// end .sidebar
+
+}// end #main

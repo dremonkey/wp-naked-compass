@@ -1,0 +1,8 @@
+// Clearfix 
+// Based on http://nicolasgallagher.com/micro-clearfix-hack
+// ------------------------------------------------------------
+@mixin cf {
+  &:before { content: ""; display: table; }
+  &:after { content: ""; display: table; clear: both; }
+  zoom: 1;
+}

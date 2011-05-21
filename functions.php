@@ -159,7 +159,7 @@ Class Theme_Setup
 
 		// Load the google api jquery
 		// http://encosia.com/2008/12/10/3-reasons-why-you-should-let-google-host-jquery-for-you/
-		wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js', '', NULL, true);
+		wp_enqueue_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js', '', NULL, true);
 		
 		// Do not load these scripts if on the admin page	
 		if (!is_admin()){

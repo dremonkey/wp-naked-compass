@@ -68,6 +68,7 @@ a:hover { color: #036; }
 
 ul, ol { margin-left: 0px; }
 ol { list-style-type: decimal; }
+ul { list-style-type: none; }
 
 /* Remove margins for navigation lists */
 nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
@@ -124,11 +125,11 @@ If a reset is not included... set * margin to 0
 
 html, body { height: 100%; }
 
-#container {
+#wrapper {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -150px;
+	margin-bottom: -150px;
 }
 
 footer, #footer, #sticky_push { height: 150px; }
@@ -173,8 +174,3 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 
 /* Hide visually and from screenreaders, but maintain layout */
 .invisible { visibility: hidden; }
-
-/* The Magnificent Clearfix: Updated to prevent margin-collapsing on child elements in most situations. Renamed to grouped. nicolasgallagher.com/micro-clearfix-hack/ */
-.grouped:before, .grouped:after { content: ""; display: table; }
-.grouped:after { clear: both; }
-.grouped { zoom: 1; }

@@ -377,43 +377,6 @@ code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-imag
   background-color: #333333;
 }
 
-/* line 18, ../sass/partials/layout/_style_960.scss */
-#main {
-  padding: 0px;
-  width: 960px;
-  margin: 0 auto;
-  zoom: 1;
-}
-/* line 5, ../sass/partials/_clearfix.scss */
-#main:before {
-  content: "";
-  display: table;
-}
-/* line 6, ../sass/partials/_clearfix.scss */
-#main:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-/* line 22, ../sass/partials/layout/_style_960.scss */
-#main .content {
-  display: inline;
-  float: left;
-  position: relative;
-  width: 630px;
-  margin: 0px 10px;
-  margin-left: 0;
-}
-/* line 26, ../sass/partials/layout/_style_960.scss */
-#main .sidebar {
-  display: inline;
-  float: left;
-  position: relative;
-  width: 310px;
-  margin: 0px 10px;
-  margin-right: 0;
-}
-
 @media screen and (min-width: 1280px) {
   /* line 22, ../sass/partials/layout/_style_1280.scss */
   #main {

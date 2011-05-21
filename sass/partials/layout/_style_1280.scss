@@ -1,0 +1,36 @@
+// Define your 960gs variables
+// This function must be declared before importing partials/960
+// These are the values for the widescreen 1280px layout
+// ------------------------------------------------------------
+@function get_var($var) {
+	@if ($var == "col_count"){
+		@return 16;
+	} @else if ($var == "col_width") {
+		@return 60px;
+	} @else if ($var == "col_gutter") {
+		@return 10px;
+	}
+}
+
+// This gives access to the 960 grid mixin
+@import "partials/960";
+
+//The closing /*/mediaquery*/ comment is required by respond.js min/max-width Media Query polyfill
+// ------------------------------------------------------------
+@media screen and (min-width: 1280px) {
+	
+	#main {
+
+		@include container($clearfix: true, $padding: 0px);
+
+		.content {
+			@include grid( ceil(get_var("col_count") * 1 / 2) , true, false );
+		}// end .content
+
+		.sidebar {
+			@include grid( floor(get_var("col_count") * 1 / 2), false, true );
+		}// end .sidebar
+
+	}// end #main
+
+}/*/mediaquery*/

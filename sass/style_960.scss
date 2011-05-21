@@ -1,0 +1,7 @@
+// This is the stylesheet that loads when people want the 960 layout
+@import "partials/layout/style_base";
+@import "partials/layout/style_960";
+
+// media query stylesheets should be at the bottom
+// --------------------------------------------------------------------------------
+@import "partials/print";

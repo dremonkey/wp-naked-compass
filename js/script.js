@@ -6,3 +6,9 @@ var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"],["_trackPageLoadTime"]
 	g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
 	s.parentNode.insertBefore(g,s)
 }(document,"script"));
+
+
+// jQuery Document Ready
+jQuery(function() {
+	jQuery("#layout li a").layoutSwitcher();
+});

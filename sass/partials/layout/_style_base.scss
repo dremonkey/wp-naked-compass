@@ -1,0 +1,70 @@
+// -----------------------------------------------------------
+// In this file you should write your main base styles.
+// -----------------------------------------------------------
+
+
+// -----------------------------------------------------------
+// Global Variables
+// -----------------------------------------------------------
+
+// Colors
+// -----------------------------------------------------------
+$bg_color: #ffffff;
+$bg_color_dark: #333333;
+
+
+// -----------------------------------------------------------
+// Mixins
+// -----------------------------------------------------------
+
+// Rounded Corners
+@mixin rounded ($radius: 5px) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+// Box Drop Shadow
+@mixin shadow ($color: #333, $blur: 5px, $x: 2px, $y: 2px) {
+	box-shadow: $x $y $blur $color;
+}
+
+// Page center a block element
+@mixin center($padding: 0px) {
+	padding: $padding;
+	width: $container_width - $padding; // Set in partial/_960.scss
+	margin: 0 auto;
+}
+
+// Gradients
+@mixin bg_gradient($start_color, $end_color, $default_color) {
+	background: #f0f0f0;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, $start_color), color-stop(1, $end_color) );
+	background-image: -moz-linear-gradient( center top, $start_color 0%, $end_color 100% );
+  	filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='"+$start_color+"', endColorstr='"+$end_color+"')"; /* ie7 */
+  	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='"+$start_color+"', endColorstr='"+$end_color+"')"; /* ie8 */
+}
+
+// -----------------------------------------------------------
+// Imports
+// -----------------------------------------------------------
+
+@import "partials/reset";
+@import "partials/layout/ie";
+
+// -----------------------------------------------------------
+// Custom Base Styles
+// These styles serve as the base for your theme. Styles defined here may be overridden by those in the media query styles
+// -----------------------------------------------------------
+
+#main {
+
+	.content {
+		background-color: $bg_color;
+	}// end .content
+
+	.sidebar {
+		background-color: $bg_color_dark;
+	}// end .sidebar
+
+}// end #main
