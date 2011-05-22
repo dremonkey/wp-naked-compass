@@ -1,8 +1,9 @@
 <?php /* The homepage file. */ ?>
 
 <?php get_header(); ?>
-
-	<div class="content left">
+	
+	<!-- .content is here as an example to demonstrate that SASS is working properly -->
+	<div class="content">
 
 		<?php
 		/* Run the loop to output the posts.

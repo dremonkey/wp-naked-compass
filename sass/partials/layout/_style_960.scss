@@ -14,7 +14,8 @@
 
 // This gives access to the 960 grid mixin
 @import "partials/960";
-	
+
+/* This styling is here as an example. */	
 #main {
 
 	@include container($clearfix: true, $padding: 0px);
