@@ -40,19 +40,17 @@ as well as add the patterns.txt file:
 
 --------------------------------------------------------------------
 
-#### patterns.txt 
-##### Used by the build file so that it does not strip out <!--[ ]--> comments. For some reason if you 
-change the build file so that you no longer tell it is compressing html files, it will strip out these comments, 
-so we have to explicitly tell it to leave these comments.
+### patterns.txt 
+#### Used by the build file so that it does not strip out <!--[ ]--> comments. For some reason if you change the build file so that you no longer tellit is compressing html files, it will strip out these comments, so we have to explicitly tell it to leave these comments.
 
 --------------------------------------------------------------------
 
-#### build.xml line 599 
-##### Changed to make sure that we can use wp_enqueue_script
+### build.xml line 599 
+#### Changed to make sure that we can use wp_enqueue_script
  
 --------------------------------------------------------------------
 
-##### OLD
+#### OLD
 
 ```java
 <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script src='${dir.js}/scripts-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m">
@@ -60,7 +58,7 @@ so we have to explicitly tell it to leave these comments.
 </replaceregexp>
 ```
 
-##### NEW
+#### NEW
 
 ```java
 <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end scripts--&gt;" replace="&lt;?php Utilities::add_js('/${dir.js}/scripts-${build.number}.min.js', 'jquery', true) ?&gt;" flags="m">
@@ -70,7 +68,7 @@ so we have to explicitly tell it to leave these comments.
 
 --------------------------------------------------------------------
 
-#### build.xml line 606 - 668 
+### build.xml line 606 - 668 
 
 Changed so that HTML comments are stripped out of *.php files rather than just *.html files. Modified solution based on:
 https://github.com/paulirish/html5-boilerplate/issues/392. Modified by removing the --remove-quotes lines because 
@@ -78,7 +76,7 @@ it was stripping out the quotes for element id and class names
 
 --------------------------------------------------------------------
 
-##### OLD
+#### OLD
 
 ```java
 <target name="-htmlclean">
@@ -146,7 +144,7 @@ it was stripping out the quotes for element id and class names
 </target>
 ```
 
-##### NEW
+#### NEW
 
 ```java
 <target name="-htmlclean">
