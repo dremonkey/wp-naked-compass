@@ -37,18 +37,12 @@
 	<link id="main_stylesheet" rel="stylesheet" type="text/css" media="all" href="<?= STYLES_DIR ?>/style.css" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-	<!-- Place scipts to load in the header below here -->
-	<!-- Modernizr enables HTML5 elements & feature detects --> 
-	<!-- Respond is a polyfill for min/max-width CSS3 Media Queries -->
-	<?php Utilities::add_js('/js/libs/modernizr-1.7.min.js', '', $in_footer=false) ?>
-	<?php Utilities::add_js('/js/libs/respond.min.js', '', $in_footer=false) ?>
-
-	<!-- Place scipts to load before </body> here -->
 	<!-- scripts concatenated and minified via ant build script-->
 	<!-- This section will be stripped and replaced with the minified / concatenated js. -->
+	<!-- Utilities::add_js must be called in the head -->
 	<?php Utilities::add_js('/js/mylibs/jquery.cookie.js', 'jquery', $in_footer=true) ?>
-	<?php Utilities::add_js('/js/mylibs/jquery.layoutSwitcher.js', 'jquery', $in_footer=true) ?>
-	<?php Utilities::add_js('/js/script.js', 'jquery', $in_footer=true) ?>
+	<?php Utilities::add_js('/js/mylibs/jquery.layoutSwitcher.js', 'jquery, jquerycookie', $in_footer=true) ?>
+	<?php Utilities::add_js('/js/script.js', 'jquery, jquerycookie, jquerylayoutswitcher', $in_footer=true) ?>
 	<!-- end scripts-->
 
 <?php wp_head(); ?>

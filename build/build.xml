@@ -599,6 +599,13 @@
         <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end scripts--&gt;" replace="&lt;?php Utilities::add_js('/${dir.js}/scripts-${build.number}.min.js', 'jquery', true) ?&gt;" flags="m">
             <fileset dir="./${dir.publish}" includes="${page-files}"/>
         </replaceregexp>
+
+        <!-- we need to make sure that all references to the old scripts are removed and replaced with the new concatenated script -->
+        <echo message="Update the reference to our concatenated script file in when calling wp_enqueue_script from functions.php" />
+        <replaceregexp match="\/\/\[\[---replace scripts---\]\][\d\w\s\W]*?\/\/\[\[---end replace scripts---\]\]" replace="wp_enqueue_script( 'scripts' );" flags="m">
+            <fileset dir="./${dir.publish}" includes="${page-files}"/>
+        </replaceregexp>
+
         <!--[! use comments like this one to avoid having them get minified -->
     </target>
     
