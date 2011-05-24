@@ -600,7 +600,7 @@
             <fileset dir="./${dir.publish}" includes="${page-files}"/>
         </replaceregexp>
 
-        <!-- we need to make sure that all references to the old scripts are removed and replaced with the new concatenated script -->
+        <!-- we need to make sure that all references to the old scripts are removed and replaced with the new concatenated script. this was added specifically to modify wp_enqueue_script in the functions.php file -->
         <echo message="Update the reference to our concatenated script file in when calling wp_enqueue_script from functions.php" />
         <replaceregexp match="\/\/\[\[---replace scripts---\]\][\d\w\s\W]*?\/\/\[\[---end replace scripts---\]\]" replace="wp_enqueue_script( 'scripts' );" flags="m">
             <fileset dir="./${dir.publish}" includes="${page-files}"/>

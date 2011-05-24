@@ -48,7 +48,7 @@ as well as add the patterns.txt file:
 
 --------------------------------------------------------------------
 
-### build.xml line 599 
+### build.xml approx. line 599 
 #### Changed to make sure that we can use wp_enqueue_script
  
 --------------------------------------------------------------------
@@ -65,6 +65,11 @@ as well as add the patterns.txt file:
 
 ```java
 <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end scripts--&gt;" replace="&lt;?php Utilities::add_js('/${dir.js}/scripts-${build.number}.min.js', 'jquery', true) ?&gt;" flags="m">
+    <fileset dir="./${dir.publish}" includes="${page-files}"/>
+</replaceregexp>
+
+<echo message="Update the reference to our concatenated script file in when calling wp_enqueue_script from functions.php" />
+<replaceregexp match="\/\/\[\[---replace scripts---\]\][\d\w\s\W]*?\/\/\[\[---end replace scripts---\]\]" replace="wp_enqueue_script( 'scripts' );" flags="m">
     <fileset dir="./${dir.publish}" includes="${page-files}"/>
 </replaceregexp>
 ```
