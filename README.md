@@ -28,6 +28,9 @@ your commercial projects.
     on Compass and Compass installation see http://compass-style.org/install/
 2.  Copy the contents of the .htaccess file that comes with this theme to the wp root directory 
     to take full advantage of HTML5 Boilerplate optimization
+3.  Create the wordpress style.css file. This needs to be put at the top level of the theme directory (theme/style.css)
+    No styles will go into this file, but this file is needed by wordpress so that it knows about your theme. You can
+    use the example.style.css file as a starter. See http://codex.wordpress.org/Theme_Development for more information.
 
 
 ## Important changes to the HTML5 Boilerplate build.xml file
