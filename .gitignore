@@ -2,6 +2,10 @@
 ####################################################
 publish
 
+# WP Style.css File   #
+#######################
+style.css
+
 # Editor Project File #
 #######################
 *.sublime-project
