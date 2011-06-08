@@ -84,7 +84,6 @@ get_header(); ?>
 <?php the_content( __( 'Continue reading &rarr;', THEME_NAME ) ); ?>
 <?php wp_link_pages( array( 'before' => '' . __( 'Pages:', THEME_NAME ), 'after' => '' ) ); ?>
 
-						<?php twentyten_posted_in(); ?>
 						<?php edit_post_link( __( 'Edit', THEME_NAME ), ' ', '' ); ?>
 
 <?php comments_template(); ?>

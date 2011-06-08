@@ -12,7 +12,7 @@ NakedCompass is a modification of the Starkers Theme. The main difference
 is that it is built to be compatible with the HTML5 Boilerplate build script 
 and the Compass CSS Framework. 
 
-I have stripped out all references to the twentyten theme, 
+I have stripped out nearly all references to the twentyten theme, 
 as well as functions that I felt were unnecessary.
 
 NakedCompass is free and fully GPL-licensed, 

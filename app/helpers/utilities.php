@@ -1,5 +1,4 @@
 <?php
-
 /** =========================================================================== **/
 /* > Utilities
 /** =========================================================================== **/
@@ -18,32 +17,30 @@ Abstract Class Utilities
 	 * @param deps (mixed) comma delimited str or array list of dependencies
 	 * @param in_footer (bool) true to load the js in the head  
 	 */
-	public static function add_js($path, $deps, $in_footer)
+	public static function add_js($path, $deps=NULL, $in_footer=true)
 	{
+
+		$is_fullpath = false;
+		if ( strpos($path, 'http') !== false )
+			$is_fullpath = true;
 
 		// Create the name for registration. This uses the script file name to create the name
 		// for registration. To create the name we strip out the file type, the version number, and
 		// any special characters.For example if the script file name is 'jquery.test-1.1.min.js'
 		// the name would be 'jquerytest'.
-
 		$pos = strrpos($path, '/') + 1;
 		$name = Utilities::slice_string($path, $pos );
 		$name= preg_replace("/((-[0-9.]+)?(.min)?(.js)$)/", '', $name);
 		$name = Utilities::clean_string($name, 50, '');
 
-		$path = TEMPLATE_URL.$path;
-		
-		// Utilities::debug($name);
-		// Utilities::debug($path);
+		if ( !$is_fullpath )
+			$path = TEMPLATE_URL.$path;
 
 		// convert $deps to an array if it is not an array
-		if ( $deps != NULL and (array) $deps !== $deps ) {
+		if ( $deps != NULL and (array) $deps !== $deps )
 			$deps = explode(',', preg_replace("/\s/", '', $deps) );
-		}
 
-		// Utilities::debug($deps);
 
-		// wp_enqueue_script( $name, $path, $req, NULL, $in_footer );
 		wp_register_script( $name, $path, $deps, NULL, $in_footer );
 
 	}
@@ -51,7 +48,7 @@ Abstract Class Utilities
 	/**
 	 * clean_string()
 	 *
-	 * Creates URL friendly strings (wordpress style)
+	 * Creates URL friendly strings
 	 */
 	public static function clean_string($phrase, $maxLength=50, $sub='-') 
 	{
@@ -103,40 +100,90 @@ Abstract Class Utilities
 	 * twitterStyleDate()
 	 * 
 	 * Twitter style post dates // 트위터 스타일의 날짜 표시법
-	 * i.e. instead of 'Posted 13 Jan 2011 at 7:03' it displays 'Posted 3 hours ago'
+	 * i.e. instead of 'Posted 13 Jan 2011 at 7:03' it displays '3 hours ago'
+	 * @param $rtime (mixed) 	str|integer representing the time. If it is a string it
+	 * 							this function will attempt to converter it to its int 
+	 *							time equivalent
 	 */
-	 
 	public static function twitterStyleDate($rtime) 
 	{
-		$tmptime = time() - $rtime;
+
+		if ( is_string($rtime) ) {
+			$t = strtotime($rtime);
+		}
+
+		$tmptime = time() - $t;
+
 		if($tmptime < 0)
-			$rtimeStr = "Posted 1 second ago";
+			$rtimeStr = "1 second ago";
 		else if ($tmptime < 60)
-			$rtimeStr = "Posted ". (int)$tmptime . " seconds ago";
+			$rtimeStr = (int)$tmptime . __(" seconds ago", THEME_NAME);
 		else if ($tmptime < 120)
-			$rtimeStr = "Posted ". (int)($tmptime/60) . " minute ago";
+			$rtimeStr = (int)($tmptime/60) . __(" minute ago", THEME_NAME);
 		else if ($tmptime < 3600)
-			$rtimeStr = "Posted ". (int)($tmptime/60) . " minutes ago";
+			$rtimeStr = (int)($tmptime/60) . __(" minutes ago", THEME_NAME);
 		else if ($tmptime < 7200)
-			$rtimeStr = "Posted ". (int)($tmptime/3600) . " hour ago";
+			$rtimeStr = (int)($tmptime/3600) . __(" hour ago", THEME_NAME);
 		else if ($tmptime < 86400)
-			$rtimeStr = "Posted ". (int)($tmptime/3600) . " hours ago";
+			$rtimeStr = (int)($tmptime/3600) . __(" hours ago", THEME_NAME);
 		else if ($tmptime < 172800)
-			$rtimeStr = "Posted ". (int)($tmptime/86400) . " day ago";
+			$rtimeStr = (int)($tmptime/86400) . __(" day ago", THEME_NAME);
 		else if ($tmptime < 604800)
-			$rtimeStr = "Posted ". (int)($tmptime/86400) . " days ago";
+			$rtimeStr = (int)($tmptime/86400) . __(" days ago", THEME_NAME);
 		else
-			$rtimeStr = date('d F Y \a\t H:i:s' , $rtime);
+			$rtimeStr = date( 'M d Y, h:iA' ,$t);
 
 		return $rtimeStr;
 	}
 
-	public static function debug($obj){
+
+	/** 
+	 * self_uri()
+	 * @return (str) the URL of the current page 
+	 */
+	public static function self_uri() 
+	{
+	    $url = 'http';
+	    $script_name = '';
+
+	    if (isset($_SERVER['REQUEST_URI'])):
+	        $script_name = $_SERVER['REQUEST_URI'];
+
+	    else:
+	        $script_name = $_SERVER['PHP_SELF'];
+
+	        if ($_SERVER['QUERY_STRING'] > ' '):
+	            $script_name .= '?' . $_SERVER['QUERY_STRING'];
+
+	        endif;
+	    endif;
+
+	        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')
+	            $url .= 's';
+
+	        $url .= '://';
+
+	        if ($_SERVER['SERVER_PORT'] != '80'):
+	            $url .= $_SERVER['HTTP_HOST'] . ':' . $_SERVER['SERVER_PORT'] . $script_name;
+
+	        else:
+	            $url .= $_SERVER['HTTP_HOST'] . $script_name;
+
+	        endif;
+		
+	    return $url;
+	}
+
+	public static function see_registered_scripts() 
+	{
+		Utilities::debug($GLOBALS['wp_scripts']->registered);
+	}
+
+	public static function debug($obj)
+	{
 		echo '<pre>';
 		var_dump($obj);
 		echo '</pre>';
 	}
-
 }
-
 ?>

@@ -15,8 +15,6 @@ get_header(); ?>
 
 					<h1><?php the_title(); ?></h1>
 
-						<?php twentyten_posted_on(); ?>
-
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', THEME_NAME ), 'after' => '' ) ); ?>
 
@@ -29,7 +27,6 @@ get_header(); ?>
 							</a>
 <?php endif; ?>
 
-						<?php twentyten_posted_in(); ?>
 						<?php edit_post_link( __( 'Edit', THEME_NAME ), '', '' ); ?>
 
 				<?php previous_post_link( '%link', '' . _x( '&larr;', 'Previous post link', THEME_NAME ) . ' %title' ); ?>
